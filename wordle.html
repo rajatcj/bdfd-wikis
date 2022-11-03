@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>BDFD Wikis</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+<link rel="stylesheet" href="./style.css">
+
+<meta property="og:type" content="website">
+      <meta property="og:site_name" content="codes.jharajat.com.np">
+      <meta property="og:title" content="My Codes (Wordle)">
+      <meta property="og:description" content="This is where I share my codes! Click me and see my projects uwu">
+      <meta property="og:image" content="https://api.lanyard.rest/754033245972201612.jpg">
+      <meta content="https://codes.jharajat.com.np/wordle.html" property="og:url" />
+      <meta content="#a43f49" data-react-helmet="true" name="theme-color" />
+
+      
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="HandheldFriendly" content="true">
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<div class="app-container">
+  <div class="app-header">
+    <div class="app-header-left">
+      <span class="app-icon"></span>
+      <p class="app-name">My Snippets</p>
+      
+    </div>
+    <div class="app-header-right">
+      <button class="mode-switch" title="Switch Theme">
+        <svg class="moon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="24" height="24" viewBox="0 0 24 24">
+          <defs></defs>
+          <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+        </svg>
+      </button>
+      
+      
+      <button class="profile-btn">
+        <img src="https://api.lanyard.rest/754033245972201612.jpg" />
+        <span>Rajat Jha</span>
+      </button>
+    </div>
+  </div>
+  <div class="app-content">
+    <div class="app-sidebar">
+      <a href="./index.html" class="app-sidebar-link">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home">
+          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+          <polyline points="9 22 9 12 15 12 15 22" /></svg>
+      </a>
+      
+    </div>
+    <div class="projects-section">
+      
+      <div class="project-boxes jsGridView" >
+
+
+        <div class="project-box-wrapper" style="width:100%;">
+          <div class="project-box">
+            <div class="project-box-header">
+              <span>Author : Rajat</span>
+              <div class="more-wrapper">
+          </div>
+        </div>
+        <div class="project-box-content-header">
+          <h3 class="box-content-header">Wordle</h3>
+          <p class="box-content-subheader">Mini Game</p>
+        </div>
+        <div class="box-progress-wrapper">
+          <p class="box-progress-header">Progress</p>
+          <div class="box-progress-bar">
+            <span class="box-progress" style="width: 100%; background-color: #096c86"></span>
+          </div>
+          <p class="box-progress-percentage">Completed</p>
+        </div>
+        <div class="project-box-footer">
+          <div class="participants">
+            <img src="https://api.lanyard.rest/754033245972201612.jpg" alt="participant">
+          </div>
+          <a href="./index.html"><button class="days-left" style="color: #4f3ff0;">
+            More Stuffs
+          </button></a>
+        </div>
+        
+      </div>
+
+      
+    
+    </div>
+  </div>
+  
+    <div class="projects-section-header" style="white-space: wrap; display: inline-block; ">
+      <p>Variables :</p>
+      <pre><code class="language-ruby">"wordlevar" with no value.</code></pre>
+      <br>
+      <br>
+      <p>Code 1/3</p>
+      <h3 id="second-heading">Trigger :</h3>
+      <pre><code class="language-ruby">?wordle</code></pre>
+
+      <h3 id="second-heading">Code : </h3>
+      <div id="codecontainer">
+      <pre onclick="CopyToClipboard('code1', 'copy1');return false;" ><span class="copytext" id="copy1">Click anywhere to copy</span>
+<code class="language-ruby" id="code1">$nomention
+  $title[Wordle • How to Play]
+  $description[Try guessing the **FIVE LETTER SECRET WORD** in 5 trials...
+  > Make an initial guess and the bot color-codes each letter which can then be used as a clue for the next trial.
+  > **Color : **
+  > **🟦 Blue : **The letter is in the secret word but wrongly placed!
+  > **🟩 Green : **The letter is in the secret word and at the same place.
+  ]
+  $color[ff8888]
+  $image[https://media.discordapp.net/attachments/837219640874631197/950475323647082496/PicsArt_03-08-01.14.17.jpg]
+  $addButton[yes;wordlecreate;Start;success;no;]</code></pre>
+      </div>
+
+      <br>
+      <br>
+
+      <p>Code 2/3</p>
+      <h3 id="second-heading">Trigger :</h3>
+      <pre><code class="language-ruby">$awaitedCommand[wordleinput;]</code></pre>
+
+      <h3 id="second-heading">Code : </h3>
+      <div id="codecontainer">
+      <pre onclick="CopyToClipboard('code2', 'copy2');return false;" ><span class="copytext" id="copy2">Click anywhere to copy</span>
+<code class="language-ruby" id="code2">$nomention
+  $suppressErrors[‼️ Stopped working!]
+  $textSplit[$getUserVar[wordlevar;$authorID];-&-]
+  $var[word;$splitText[1]]
+  $var[trial;$sum[0$splitText[2];1]]
+  $var[sec;$splitText[3]]
+  $var[suc;$splitText[4]]
+  $var[pri;$splitText[5]]
+  $var[msg;$splitText[6]]
+  $textSplit[$toUppercase[$cropText[$message;5;]$var[word]];]
+  $if[$charCount[$message]==5]
+  $httpGet[https://api.dictionaryapi.dev/api/v2/entries/en/$message]
+  $if[$httpResult[title]==No Definitions Found]
+  $reply
+  ‼️ Not a Wordle acceptable word!
+  $deleteIn[5s]
+  $awaitFunc[wordleinput;$authorID]
+  $else
+  $if[$var[trial]<=5]
+  $var[letter1;$if[$checkContains[$var[word];$splitText[1]]==false]secondary$var[sec;$var[sec]$splitText[1]]$elseif[$splitText[1]==$splitText[6]]success$var[suc;$var[suc]$splitText[1]]$elseprimary$var[pri;$var[pri]$splitText[1]]$endif]
+  $var[letter2;$if[$checkContains[$var[word];$splitText[2]]==false]secondary$var[sec;$var[sec]$splitText[2]]$elseif[$splitText[2]==$splitText[7]]success$var[suc;$var[suc]$splitText[2]]$elseprimary$var[pri;$var[pri]$splitText[2]]$endif]
+  $var[letter3;$if[$checkContains[$var[word];$splitText[3]]==false]secondary$var[sec;$var[sec]$splitText[3]]$elseif[$splitText[3]==$splitText[8]]success$var[suc;$var[suc]$splitText[3]]$elseprimary$var[pri;$var[pri]$splitText[3]]$endif]
+  $var[letter4;$if[$checkContains[$var[word];$splitText[4]]==false]secondary$var[sec;$var[sec]$splitText[4]]$elseif[$splitText[4]==$splitText[9]]success$var[suc;$var[suc]$splitText[4]]$elseprimary$var[pri;$var[pri]$splitText[4]]$endif]
+  $var[letter5;$if[$checkContains[$var[word];$splitText[5]]==false]secondary$var[sec;$var[sec]$splitText[5]]$elseif[$splitText[5]==$splitText[10]]success$var[suc;$var[suc]$splitText[5]]$elseprimary$var[pri;$var[pri]$splitText[5]]$endif]
+  $setUserVar[wordlevar;$var[word]-&-$var[trial]-&-$var[sec]-&-$var[suc]-&-$var[pri]-&-$var[msg];$authorID]
+  $addButton[yes;wordleinput1$var[trial]-$splitText[1];$splitText[1];$var[letter1];no;;$var[msg]]
+  $addButton[no;wordleinput2$var[trial]-$splitText[2];$splitText[2];$var[letter2];no;;$var[msg]]
+  $addButton[no;wordleinput3$var[trial]-$splitText[3];$splitText[3];$var[letter3];no;;$var[msg]]
+  $addButton[no;wordleinput4$var[trial]-$splitText[4];$splitText[4];$var[letter4];no;;$var[msg]]
+  $addButton[no;wordleinput5$var[trial]-$splitText[5];$splitText[5];$var[letter5];no;;$var[msg]]
+  $if[$toUppercase[$message]==$var[word]]
+  🎊 **Awesome!** You guessed it right in **$var[trial] trials**!
+  $addButton[yes;wordlecreate;Play Again;secondary;no;]
+  $else
+  $awaitFunc[wordleinput;$authorID]
+  $endif
+  $else
+  $if[$toUppercase[$message]==$var[word]]
+  🎊 **Awesome!** You guessed it right in **$var[trial] trials**!
+  $addButton[yes;wordleinput1$var[trial]-$splitText[6];$splitText[6];success;no;]
+  $addButton[no;wordleinput2$var[trial]-$splitText[7];$splitText[7];success;no;]
+  $addButton[no;wordleinput3$var[trial]-$splitText[8];$splitText[8];success;no;]
+  $addButton[no;wordleinput4$var[trial]-$splitText[9];$splitText[9];success;no;]
+  $addButton[no;wordleinput5$var[trial]-$splitText[10];$splitText[10];success;no;]
+  $addButton[yes;wordlecreate;Play Again;secondary;no;]
+  $else
+  😬 **Game ended!** You lost. The word was..
+  $addButton[yes;wordleinput1$var[trial]-$splitText[6];$splitText[6];danger;no;]
+  $addButton[no;wordleinput2$var[trial]-$splitText[7];$splitText[7];danger;no;]
+  $addButton[no;wordleinput3$var[trial]-$splitText[8];$splitText[8];danger;no;]
+  $addButton[no;wordleinput4$var[trial]-$splitText[9];$splitText[9];danger;no;]
+  $addButton[no;wordleinput5$var[trial]-$splitText[10];$splitText[10];danger;no;]
+  $addButton[yes;wordlecreate;Play Again;secondary;no;]
+  $endif
+  $endif
+  $endif
+  $else
+  $reply
+  ‼️ Hey, thats not a **5-letter word**!
+  $deleteIn[5s]
+  $awaitFunc[wordleinput;$authorID]
+  $endif</code></pre>
+      </div>
+      <br>
+      <br>
+
+      <p>Code 3/3</p>
+      <h3 id="second-heading">Trigger :</h3>
+      <pre><code class="language-ruby">?wordle</code></pre>
+
+      <h3 id="second-heading">Code : </h3>
+      <div id="codecontainer">
+      <pre onclick="CopyToClipboard('code3', 'copy3');return false;" ><span class="copytext" id="copy3">Click anywhere to copy</span>
+<code class="language-ruby" id="code3">$if[$checkContains[$customID;wordleinput]==true]
+  $ephemeral
+  $textSplit[$customID;-]
+  $removeButtons
+  That was letter **$splitText[2]**
+  $var[usedwords;$toLowercase[$replaceText[$getUserVar[wordlevar;$authorID];$cropText[$getUserVar[wordlevar;$authorID];5;];;1]]]
+  $title[Remaining Letters]
+  $description[$replaceText[$replaceText[$checkContains[$var[usedwords];a];false;:regional_indicator_a:;1]$replaceText[$checkContains[$var[usedwords];b];false;:regional_indicator_b:;1]$replaceText[$checkContains[$var[usedwords];c];false;:regional_indicator_c:;1]$replaceText[$checkContains[$var[usedwords];d];false;:regional_indicator_d:;1]$replaceText[$checkContains[$var[usedwords];e];false;:regional_indicator_e:;1]$replaceText[$checkContains[$var[usedwords];f];false;:regional_indicator_f:;1]$replaceText[$checkContains[$var[usedwords];g];false;:regional_indicator_g:;1]$replaceText[$checkContains[$var[usedwords];h];false;:regional_indicator_h:;1]$replaceText[$checkContains[$var[usedwords];i];false;:regional_indicator_i:;1]$replaceText[$checkContains[$var[usedwords];j];false;:regional_indicator_j:;1]$replaceText[$checkContains[$var[usedwords];k];false;:regional_indicator_k:;1]$replaceText[$checkContains[$var[usedwords];l];false;:regional_indicator_l:;1]$replaceText[$checkContains[$var[usedwords];m];false;:regional_indicator_m:;1]$replaceText[$checkContains[$var[usedwords];n];false;:regional_indicator_n:;1]$replaceText[$checkContains[$var[usedwords];o];false;:regional_indicator_o:;1]$replaceText[$checkContains[$var[usedwords];p];false;:regional_indicator_p:;1]$replaceText[$checkContains[$var[usedwords];q];false;:regional_indicator_q:;1]$replaceText[$checkContains[$var[usedwords];r];false;:regional_indicator_r:;1]$replaceText[$checkContains[$var[usedwords];s];false;:regional_indicator_s:;1]$replaceText[$checkContains[$var[usedwords];t];false;:regional_indicator_t:;1]$replaceText[$checkContains[$var[usedwords];u];false;:regional_indicator_u:;1]$replaceText[$checkContains[$var[usedwords];v];false;:regional_indicator_v:;1]$replaceText[$checkContains[$var[usedwords];w];false;:regional_indicator_w:;1]$replaceText[$checkContains[$var[usedwords];x];false;:regional_indicator_x:;1]$replaceText[$checkContains[$var[usedwords];y];false;:regional_indicator_y:;1]$replaceText[$checkContains[$var[usedwords];z];false;:regional_indicator_z:;1];true;;-1]]
+  $image[https://media.discordapp.net/attachments/837219640874631197/950475323647082496/PicsArt_03-08-01.14.17.jpg]
+  $color[ff8888]
+  $endif
+   
+  $if[$checkContains[$customID;wordlecreate]==true]
+  $removeButtons
+  $var[word;$toUppercase[$randomText[chess;apple;drink;tiger;teddy;human;puppy;train;frame;trial;stage;Abuse;Adult;Agent;Anger;Apple;Award;Basis;Beach;Birth;Block;Blood;Board;Brain;Bread;Break;Brown;Buyer;Cause;Chain;Chair;Chest;Chief;Child;China;Claim;Class;Clock;Coach;Coast;Court;Cover;Cream;Crime;Cross;Crowd;Crown;Cycle;Dance;Death;Depth;Doubt;Draft;Drama;Dream;Dress;Drink;Drive;Earth;Enemy;Entry;Error;Event;Faith;Fault;Field;Fight;Final;Floor;Focus;Force;Frame;Frank;Front;Fruit;Glass;Grant;Grass;Green;Group;Guide;Heart;Henry;Horse;Hotel;House;Image;Index;Input;Issue;Japan;Jones;Judge;Knife;Laura;Layer;Level;Lewis;Light;Limit;Lunch;Major;March;Match;Metal;Model;Money;Month;Motor;Mouth;Music;Night;Noise;North;Novel;Nurse;Offer;Order;Other;Owner;Panel;Paper;Party;Peace;Peter;Phase;Phone;Piece;Pilot;Pitch;Place;Plane;Plant;Plate;Point;Pound;Power;Press;Price;Pride;Prize;Proof;Queen;Radio;Range;Ratio;Reply;Right;River;Round;Route;Rugby;Scale;Scene;Scope;Score;Sense;Shape;Share;Sheep;Sheet;Shift;Shirt;Shock;Sight;Simon;Skill;Sleep;Smile;Smith;Smoke;Sound;South;Space;Speed;Spite;Sport;Squad;Staff;Stage;Start;State;Steam;Steel;Stock;Stone;Store;Study;Stuff;Style;Sugar;Table;Taste;Terry;Theme;Thing;Title;Total;Touch;Tower;Track;Trade;Train;Trend;Trial;Trust;Truth;Uncle;Union;Unity;Value;Video;Visit;Voice;Waste;Watch;Water;While;White;Whole;Woman;World;Youth]]]
+  $setUserVar[wordlevar;$var[word]-&-0-&--&--&--&-$messageID;$authorID]
+  $author[Wordle • Start Guessing...]
+  $authorURL[https://www.google.com/search?q=hey+cheater%2C+the+word+is+$var[word]]
+  $image[https://media.discordapp.net/attachments/837219640874631197/950481347930124348/PicsArt_03-08-01.38.14.jpg]
+  $color[ff8888]
+  $awaitFunc[wordleinput;$authorID]
+  $endif</code></pre>
+      </div>
+
+
+      <h4>Repost and modification of the code or sharing to youtube shall only be done by giving credit to <font color="ruby">"Rajat#1004"</font> and mentioning link to this page in the description.</h4>
+
+      
+
+
+    </div>
+    
+    
+
+
+
+
+  </div>
+
+<div class="messages-section">
+  <button class="messages-close">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x-circle">
+      <circle cx="12" cy="12" r="10" />
+      <line x1="15" y1="9" x2="9" y2="15" />
+      <line x1="9" y1="9" x2="15" y2="15" /></svg>
+  </button>
+  <iframe src="./profile/index.html"  style="width:100%; height: 93vh; border: none;" title="Discord Status"></iframe>
+                  
+</div>
+</div>
+</div>
+<!-- partial -->
+  <script  src="./script.js"></script>
+  
+
+<script src="prism.js"></script>
+
+
+<script>
+  function CopyToClipboard(code, button)
+{
+var r = document.createRange();
+r.selectNode(document.getElementById(code));
+window.getSelection().removeAllRanges();
+window.getSelection().addRange(r);
+document.execCommand('copy');
+window.getSelection().removeAllRanges();
+
+const div = document.getElementById(button)
+div.innerHTML = `Copied to Clipboard`;
+}
+
+
+
+</script>
+
+</body>
+</html>
