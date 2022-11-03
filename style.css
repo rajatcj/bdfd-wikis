@@ -693,7 +693,7 @@ button, a {
 }
 
 .box-content-header {
-  font-size: 16px;
+  font-size: 20px;
   line-height: 24px;
   font-weight: 700;
   opacity: 0.7;
@@ -842,10 +842,7 @@ button, a {
   }
 }
 @media screen and (max-width: 720px) {
-  .app-name, .profile-btn span {
-    display: none;
-  }
-
+  
   .add-btn, .notification-btn, .mode-switch {
     width: 20px;
     height: 20px;
@@ -877,12 +874,12 @@ button, a {
   }
 
   .status-number, .status-type {
-    font-size: 10px;
+    font-size: 15px;
   }
 
   .view-btn {
-    width: 24px;
-    height: 24px;
+    width: 40px;
+    height: 40px;
   }
 
   .app-header {
@@ -931,7 +928,7 @@ button, a {
   }
 
   .box-content-header {
-    font-size: 12px;
+    font-size: 20px;
     line-height: 16px;
   }
 
@@ -953,7 +950,7 @@ button, a {
   }
 
   .days-left {
-    font-size: 8px;
+    font-size: 10px;
     padding: 6px 6px;
     text-align: center;
   }
