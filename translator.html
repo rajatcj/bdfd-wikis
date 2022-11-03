@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>BDFD Wikis</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+<link rel="stylesheet" href="./style.css">
+
+<meta property="og:type" content="website">
+      <meta property="og:site_name" content="codes.jharajat.com.np">
+      <meta property="og:title" content="My Codes (Translator)">
+      <meta property="og:description" content="This is where I share my codes! Click me and see my projects uwu">
+      <meta property="og:image" content="https://api.lanyard.rest/754033245972201612.jpg">
+      <meta content="https://codes.jharajat.com.np/serverlist.html" property="og:url" />
+      <meta content="#a43f49" data-react-helmet="true" name="theme-color" />
+
+
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="HandheldFriendly" content="true">
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<div class="app-container">
+  <div class="app-header">
+    <div class="app-header-left">
+      <span class="app-icon"></span>
+      <p class="app-name">My Snippets</p>
+      
+    </div>
+    <div class="app-header-right">
+      <button class="mode-switch" title="Switch Theme">
+        <svg class="moon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="24" height="24" viewBox="0 0 24 24">
+          <defs></defs>
+          <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+        </svg>
+      </button>
+      
+      
+      <button class="profile-btn">
+        <img src="https://api.lanyard.rest/754033245972201612.jpg" />
+        <span>Rajat Jha</span>
+      </button>
+    </div>
+  </div>
+  <div class="app-content">
+    <div class="app-sidebar">
+      <a href="./index.html" class="app-sidebar-link">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home">
+          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+          <polyline points="9 22 9 12 15 12 15 22" /></svg>
+      </a>
+      
+    </div>
+    <div class="projects-section">
+      
+      <div class="project-boxes jsGridView" >
+
+
+        <div class="project-box-wrapper" style="width:100%;">
+          <div class="project-box" style="background-color: #fee4cb;">
+            <div class="project-box-header">
+              <span>Author : Rajat</span>
+              <div class="more-wrapper">
+          </div>
+        </div>
+        <div class="project-box-content-header">
+          <h3 class="box-content-header">Translator</h3>
+          <p class="box-content-subheader">Util.</p>
+        </div>
+        <div class="box-progress-wrapper">
+          <p class="box-progress-header">Progress</p>
+          <div class="box-progress-bar">
+            <span class="box-progress" style="width: 100%; background-color: #ff942e"></span>
+          </div>
+          <p class="box-progress-percentage">Completed</p>
+        </div>
+        <div class="project-box-footer">
+          <div class="participants">
+            <img src="https://api.lanyard.rest/754033245972201612.jpg" alt="participant">
+          </div>
+          <a href="./index.html"><button class="days-left" style="color: #ff942e;">
+            More Stuffs
+          </button></a>
+        </div>
+        
+      </div>
+
+      
+    
+    </div>
+  </div>
+  
+    <div class="projects-section-header" style="white-space: nowrap; display: inline-block; ">
+      
+      <p>Code 1/2</p>
+      <h3 id="second-heading">Trigger :</h3>
+      <pre><code class="language-ruby">?translate</code></pre>
+
+      <h3 id="second-heading">Code : </h3>
+      <div id="codecontainer">
+      <pre onclick="CopyToClipboard('code1', 'copy1');return false;" ><span class="copytext" id="copy1">Click anywhere to copy</span>
+<code class="language-ruby" id="code1">$nomention
+  $var[en;🇺🇸 English] $var[ar;🇦🇪 Arabic] $var[zh;🇨🇳 Chinese] $var[nl;🇳🇱 Dutch] $var[fi;🇫🇮 Finnish]
+  $var[fr;🇫🇷 French] $var[de;🇩🇪 German] $var[el;🇬🇷 Greek] $var[he;🇮🇱 Hebrew] $var[hi;🇮🇳 Hindi] $var[id;🇮🇩 Indonesian]
+  $var[ga;🇮🇪 Irish] $var[it;🇮🇹 Italian] $var[ja;🇯🇵 Japanese] $var[ko;🇰🇷 Korean] $var[pl;🇵🇱 Polish] $var[pt;🇵🇹 Portuguese] $var[ru;🇷🇺 Russian]
+  $var[sk;🇸🇰 Slovak] $var[es;🇪🇸 Spanish] $var[sv;🇸🇪 Swedish] $var[tr;🇹🇷 Turkish] $var[uk;🇺🇦 Ukranian] $var[vi;🇻🇳 Vietnamese]
+   
+   
+  $var[my_language;en]
+  $c[Type your Default language code here above. The language where the bot will translate withoout select menu]
+   
+   
+  $httpPost[https://libretranslate.de/translate;{
+          "q": "$message",
+          "source": "auto",
+          "target": "$var[my_language]",
+          "format": "text"
+      }]
+  $onlyIf[$round[$httpResult[detectedLanguage;confidence];0]!=0;‼️ Couldnt detect that language!]
+  $description[$message]
+  $title[📚 Translation]
+  $footer[Detected Language : $var[$httpResult[detectedLanguage;language]], Confidence : $round[$httpResult[detectedLanguage;confidence];0]]
+  $color[ff8888]
+  $addField[🇺🇸 English :;$httpResult[translatedText];no]
+  $newSelectMenu[translator;1;3;Select Target Language]
+  $addSelectMenuOption[translator;English;🇺🇸#English&en;;;🇺🇸]
+  $addSelectMenuOption[translator;Arabic;🇦🇪#Arabic&ar;;;🇦🇪]
+  $addSelectMenuOption[translator;Chinese;🇨🇳#Chinese&zh;;;🇨🇳]
+  $addSelectMenuOption[translator;Dutch;🇳🇱#Dutch&nl;;;🇳🇱]
+  $addSelectMenuOption[translator;Finnish;🇫🇮#Finnish&fi;;;🇫🇮]
+  $addSelectMenuOption[translator;French;🇫🇷#French&fr;;;🇫🇷]
+  $addSelectMenuOption[translator;German;🇩🇪#German&de;;;🇩🇪]
+  $addSelectMenuOption[translator;Greek;🇬🇷#Greek& el;;;🇬🇷]
+  $addSelectMenuOption[translator;Hebrew;🇮🇱#Hebrew&he;;;🇮🇱]
+  $addSelectMenuOption[translator;Hindi;🇮🇳#Hindi&hi;;;🇮🇳]
+  $addSelectMenuOption[translator;Indonesian;🇮🇩#Indonesian&id;;;🇮🇩]
+  $addSelectMenuOption[translator;Irish;🇮🇪#Irish&ga;;;🇮🇪]
+  $addSelectMenuOption[translator;Italian;🇮🇹#Italian& it;;;🇮🇹]
+  $addSelectMenuOption[translator;Japanese;🇯🇵#Japanese&ja;;;🇯🇵]
+  $addSelectMenuOption[translator;Korean;🇰🇷#Korean&ko;;;🇰🇷]
+  $addSelectMenuOption[translator;Polish;🇵🇱#Polish&pl;;;🇵🇱]
+  $addSelectMenuOption[translator;Portuguese;🇵🇹#Portuguese&pt;;;🇵🇹]
+  $addSelectMenuOption[translator;Russian;🇷🇺#Russian&ru;;;🇷🇺]
+  $addSelectMenuOption[translator;Slovak;🇸🇰#Slovak&sk;;;🇸🇰]
+  $addSelectMenuOption[translator;Spanish;🇪🇸#Spanish&es;;;🇪🇸]
+  $addSelectMenuOption[translator;Swedish;🇸🇪#Swedish&sv;;;🇸🇪]
+  $addSelectMenuOption[translator;Turkish;🇹🇷#Turkish&tr;;;🇹🇷]
+  $addSelectMenuOption[translator;Ukranian;🇺🇦#Ukranian&uk;;;🇺🇦]
+  $addSelectMenuOption[translator;Vietnamese;🇻🇳#Vietnamese&vi;;;🇻🇳]
+  $textSplit[$var[$httpResult[detectedLanguage;language]]; ]
+  $addButton[no;translatoreply@$httpResult[detectedLanguage;language];Translate to $optOff[$splitText[2]];secondary;no;$optOff[$splitText[1]]]</code></pre>
+      </div>
+
+      <br>
+      <br>
+
+      <p>Code 2/2</p>
+      <h3 id="second-heading">Trigger :</h3>
+      <pre><code class="language-ruby">$onInteraction</code></pre>
+
+      <h3 id="second-heading">Code : </h3>
+      <div id="codecontainer">
+      <pre onclick="CopyToClipboard('code2', 'copy2');return false;" ><span class="copytext" id="copy2">Click anywhere to copy</span>
+<code class="language-ruby" id="code2">$nomention
+  $onlyIf[$checkContains[$customID;translator]==true;]
+  $var[en;🇺🇸 English] $var[ar;🇦🇪 Arabic] $var[zh;🇨🇳 Chinese] $var[nl;🇳🇱 Dutch] $var[fi;🇫🇮 Finnish]
+  $var[fr;🇫🇷 French] $var[de;🇩🇪 German] $var[el;🇬🇷 Greek] $var[he;🇮🇱 Hebrew] $var[hi;🇮🇳 Hindi] $var[id;🇮🇩 Indonesian]
+  $var[ga;🇮🇪 Irish] $var[it;🇮🇹 Italian] $var[ja;🇯🇵 Japanese] $var[ko;🇰🇷 Korean] $var[pl;🇵🇱 Polish] $var[pt;🇵🇹 Portuguese] $var[ru;🇷🇺 Russian]
+  $var[sk;🇸🇰 Slovak] $var[es;🇪🇸 Spanish] $var[sv;🇸🇪 Swedish] $var[tr;🇹🇷 Turkish] $var[uk;🇺🇦 Ukranian] $var[vi;🇻🇳 Vietnamese]
+  $if[$checkContains[$customID;translatoreply]]
+  $textSplit[$customID;@]
+  $newModal[translatorresp@$splitText[2];Translate to $var[$splitText[2]]]
+  $addTextInput[tt;paragraph;Type text here.;;500;yes;;]
+  $elseif[$checkContains[$customID;translatorresp]]
+  $textSplit[$customID;@]
+  $httpPost[https://libretranslate.de/translate;{
+          "q": "$input[tt]",
+          "source": "auto",
+          "target": "$optOff[$splitText[2]]",
+          "format": "text"
+      }]
+  $var[result1;$httpResult[translatedText]]
+  $var[lang1;$splitText[2]]
+  $description[$input[tt]]
+  $title[📚 Translation]
+  $footer[Detected Language : $var[$httpResult[detectedLanguage;language]], Confidence : $round[$httpResult[detectedLanguage;confidence];0]]
+  $var[result1]
+  $color[ff8888]
+  $addField[$var[$var[lang1]];>>> $var[result1];no] 
+  $else
+  $textSplit[$message; ]
+  $var[message;$getEmbedData[$channelID;$messageID;1;description]]
+  $async[lang1]
+  $try
+  $textSplit[$splitText[1];&]
+  $httpPost[https://libretranslate.de/translate;{
+          "q": "$var[message]",
+          "source": "auto",
+          "target": "$optOff[$splitText[2]]",
+          "format": "text"
+      }]
+  $var[result1;$httpResult[translatedText]]
+  $var[lang1;$splitText[2]]
+  $endtry
+  $endasync
+  $async[lang2]
+  $try
+  $textSplit[$splitText[2];&]
+  $httpPost[https://libretranslate.de/translate;{
+          "q": "$var[message]",
+          "source": "auto",
+          "target": "$optOff[$splitText[2]]",
+          "format": "text"
+      }]
+  $var[result2;$httpResult[translatedText]]
+  $var[lang2;$splitText[2]]
+  $endtry
+  $endasync
+  $async[lang3]
+  $try
+  $textSplit[$splitText[3];&]
+  $httpPost[https://libretranslate.de/translate;{
+          "q": "$var[message]",
+          "source": "auto",
+          "target": "$optOff[$splitText[2]]",
+          "format": "text"
+      }]
+  $var[result3;$httpResult[translatedText]]
+  $var[lang3;$splitText[2]]
+  $endtry
+  $endasync
+  $description[$var[message]]
+  $title[📚 Translation]
+  $footer[$getEmbedData[$channelID;$messageID;1;footer]]
+  $color[ff8888]
+  $await[lang1] $await[lang2] $await[lang3] 
+  $try $addField[$var[$var[lang1]];>>> $var[result1];no]  $textSplit[$var[$var[lang1]]; ] 
+  $endtry
+  $try $addField[$var[$var[lang2]];>>> $var[result2];no] $textSplit[$var[$var[lang2]]; ] 
+  $endtry
+  $try $addField[$var[$var[lang3]];>>> $var[result3];no] $textSplit[$var[$var[lang3]]; ] 
+  $endtry
+  $endif</code></pre>
+
+
+    </div>
+    
+    </div>
+
+
+
+
+  </div>
+
+<div class="messages-section">
+  <button class="messages-close">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x-circle">
+      <circle cx="12" cy="12" r="10" />
+      <line x1="15" y1="9" x2="9" y2="15" />
+      <line x1="9" y1="9" x2="15" y2="15" /></svg>
+  </button>
+  <iframe src="./profile/index.html"  style="width:100%; height: 93vh; border: none;" title="Discord Status"></iframe>
+                  
+</div>
+</div>
+</div>
+<!-- partial -->
+  <script  src="./script.js"></script>
+  
+
+<script src="prism.js"></script>
+
+
+<script>
+  function CopyToClipboard(code, button)
+{
+var r = document.createRange();
+r.selectNode(document.getElementById(code));
+window.getSelection().removeAllRanges();
+window.getSelection().addRange(r);
+document.execCommand('copy');
+window.getSelection().removeAllRanges();
+
+const div = document.getElementById(button)
+div.innerHTML = `Copied to Clipboard`;
+}
+
+
+
+</script>
+
+</body>
+</html>
