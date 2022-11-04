@@ -23,19 +23,6 @@
 
 
 
-::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
-}
-::-webkit-scrollbar-track {
-  background-color: #a43f49;
-}
-::-webkit-scrollbar-thumb {
-  height: 200px;
-  background-color: #b6b6b6;
-  background-image:-webkit-linear-gradient(rgba(255,255,255,.3) 20%,transparent 20%,transparent 40%,rgba(255, 255, 255, 0.3) 40%,rgba(255,255,255,.3) 60%,transparent 60%,transparent 80%,rgba(255, 255, 255, 0.3) 80%);
-  border-radius: 10px;
-}
 
 
 
@@ -96,6 +83,21 @@
   --message-btn: rgba(195, 207, 244, 0.1);
 }
 
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background-color: #a43f49;
+}
+::-webkit-scrollbar-thumb {
+  height: 200px;
+  background-color: #b6b6b6;
+  background-image:-webkit-linear-gradient(rgba(255,255,255,.3) 20%,transparent 20%,transparent 40%,rgba(255, 255, 255, 0.3) 40%,rgba(255,255,255,.3) 60%,transparent 60%,transparent 80%,rgba(255, 255, 255, 0.3) 80%);
+  border-radius: 10px;
+}
+
+
 
 .copytext {
   color:var(--star);
@@ -108,7 +110,7 @@ code[class*=language-],pre[class*=language-]{
   background:0 0;
   text-shadow:0px var(--secondary-color);
   font-family:Consolas,Monaco,'Andale Mono','Ubuntu Mono',monospace;
-  font-size:1em;
+  font-size:15px;
   text-align:left;
   white-space:pre;
   word-spacing:normal;
@@ -874,6 +876,11 @@ button, a {
 @media screen and (max-width: 520px) {
   .projects-section {
     overflow: auto;
+  }
+
+  code[class*=language-],pre[class*=language-]{
+    font-size:12px;
+    
   }
 
   .project-boxes {
