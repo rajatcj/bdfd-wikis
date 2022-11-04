@@ -29,7 +29,9 @@
 
 
 
-
+#codecontainer {
+  position: relative;
+}
 
 
 #codecontainer pre {
@@ -101,6 +103,13 @@
 
 .copytext {
   color:var(--star);
+  z-index: 9; 
+  margin: 20px; 
+  position: absolute;
+  top: 0;
+  right: 0;
+  text-shadow: 2px 2px 8px #a43f49;
+  
 }
 
 

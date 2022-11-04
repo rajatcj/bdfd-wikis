@@ -99,7 +99,7 @@
 
       <h3 id="second-heading">Code : </h3>
       <div id="codecontainer">
-      <pre onclick="CopyToClipboard('code1', 'copy1');return false;" ><span class="copytext" id="copy1">Click anywhere to copy</span>
+      <pre onclick="CopyToClipboard('code1', 'copy1');return false;" ><span class="copytext" id="copy1"><i class="fa-regular fa-copy"></i> Click anywhere to copy</span>
 <code class="language-ruby" id="code1">$nomention
   $var[en;🇺🇸 English] $var[ar;🇦🇪 Arabic] $var[zh;🇨🇳 Chinese] $var[nl;🇳🇱 Dutch] $var[fi;🇫🇮 Finnish]
   $var[fr;🇫🇷 French] $var[de;🇩🇪 German] $var[el;🇬🇷 Greek] $var[he;🇮🇱 Hebrew] $var[hi;🇮🇳 Hindi] $var[id;🇮🇩 Indonesian]
@@ -161,7 +161,7 @@
 
       <h3 id="second-heading">Code : </h3>
       <div id="codecontainer">
-      <pre onclick="CopyToClipboard('code2', 'copy2');return false;" ><span class="copytext" id="copy2">Click anywhere to copy</span>
+      <pre onclick="CopyToClipboard('code2', 'copy2');return false;" ><span class="copytext" id="copy2"><i class="fa-regular fa-copy"></i> Click anywhere to copy</span>
 <code class="language-ruby" id="code2">$nomention
   $onlyIf[$checkContains[$customID;translator]==true;]
   $var[en;🇺🇸 English] $var[ar;🇦🇪 Arabic] $var[zh;🇨🇳 Chinese] $var[nl;🇳🇱 Dutch] $var[fi;🇫🇮 Finnish]
@@ -283,12 +283,12 @@ document.execCommand('copy');
 window.getSelection().removeAllRanges();
 
 const div = document.getElementById(button)
-div.innerHTML = `Copied to Clipboard`;
+div.innerHTML = `<i class="fa-solid fa-copy"></i> Copied to Clipboard`;
 }
 
 
 
 </script>
-
+<script src="https://kit.fontawesome.com/19746ffdef.js" crossorigin="anonymous"></script>
 </body>
 </html>
