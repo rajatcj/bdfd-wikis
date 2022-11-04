@@ -82,6 +82,13 @@ html {
   scrollbar-width: none;
 }
 
+.profile-detail {
+  background: #2a2c30;
+  height: 100px;
+  overflow: auto;
+  scrollbar-width: none;
+}
+
 .card::-webkit-scrollbar {
   display: none;
 }
@@ -246,8 +253,8 @@ html {
 }
 
 .card-content .category-title {
-  color: #c2c2c2;
-  font-weight: 600;
+  color: #ffffff;
+  font-weight: 700;
   text-transform: uppercase;
   font-size: 0.85rem;
   margin-bottom: 10px;

@@ -24,9 +24,9 @@ async function init(data) {
             if(element['name'] === "Spotify") {
                 var songinfo = [json.spotify['song'], "by " + json.spotify['artist'].split('; ').join(', '), "on " + json.spotify['album']]
                 div.innerHTML = '<img draggable="false" alt="" width="80" height="80" src="' +
-                    json.spotify['album_art_url'] + '"> ' +"<ul><li><strong>" + 'LIlSTENING TO SPOTIFY...' + "</strong></li>"  + "<li>" +
+                    json.spotify['album_art_url'] + '"> ' +"<ul><li><strong>" + 'LISTENING TO SPOTIFY...' + "</strong></li>"  + "<li>" +
                     songinfo.join("</li><li>") + '</li></ul>';
-            };
+            } 
 
             
 
