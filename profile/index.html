@@ -104,8 +104,12 @@
           </div>
         </div>
         <div class="card-footer">
-          <form class="send-message" action="https://aoijsforbotu.notarepl.repl.co/message" method="get">
-            <input type="text" name="msg" id="msg" placeholder="Send a secret message to Rajat" />
+          <form class="send-message" action="https://discord.com/api/webhooks/1038824056763465988/KSJn0jAh7vK8rFvZ016TxGGF9_J61QeK3IqygTJ1KIKfdGOYF4XnlTJrcsdWeQMNFeES" method="post">
+            <input name="avatar_url" type="hidden" value="https://cdn.discordapp.com/emojis/1023214439148830750.png"/>
+            <input name="username" type="hidden" value="snippets.jharajat.com.np > From Snippets"/>
+            
+            <input type="text" autocomplete="off" name="content" id="content" placeholder="Send a secret message to Rajat" />
+            
           </form>
         </div>
       </div>
@@ -116,6 +120,13 @@
     <script src="./assets/js/main.js"></script>
     <script src="https://sybraxdesign.fr/api/github/main.js"></script>
 
+    <script>
+      document.querySelector('#content').addEventListener('keypress', function (e) {
+        setTimeout(function() { if (e.key === 'Enter') {
+             alert("Your message was sent to Rajat. He'll contact you if you have included your information (name/contact).");
+          }}, 1000);
+      });
+    </script>
 
     <script>
       // JSON - JavaScript Object Notation
