@@ -209,7 +209,7 @@ $textSplit[$splitText[2];]
 $var[lb;false]
 $if[$var[time]<$getTimestamp]
     $var[lb;true]
-    $if[$getVar[snakescore;$authorID]>$var[score]]
+    $if[$getVar[snakescore;$authorID]<$var[score]]
         $sendMessage[<@$authorID> 🐍 Classic Snake **Timed Up** and your score was ` $var[score] `, GG. ***[AND ITS YOUR NEW HIGHSCORE]***]
         $setUserVar[snakescore;$var[score];$authorID]
         $setVar[snakescore;$var[score];$authorID]
@@ -237,7 +237,7 @@ $endif
 
 $if[$checkContains[$getUserVar[snakelength];$var[snakepo]]]
     $var[lb;true]
-    $if[$getVar[snakescore;$authorID]>$var[score]]
+    $if[$getVar[snakescore;$authorID]<$var[score]]
         $sendMessage[<@$authorID> 🐍 Classic Snake **ate himself** and died with score ` $var[score] `, **Not GG**. ***[AND ITS YOUR NEW HIGHSCORE]***]
         $setUserVar[snakescore;$var[score];$authorID]
         $setVar[snakescore;$var[score];$authorID]
@@ -300,7 +300,7 @@ $if[$var[lb]==true]
     $removeButtons
     $var[p;1] $var[type;user]
     $newSelectMenu[$authorID-snake-crapassdogshitisbad-$var[type];1;1;Server LeaderBoard]
-    $try $addSelectMenuOption[$authorID-snake-crapassdogshitisbad-$var[type];$username[$authorID] (Your Highest);l;Score : $getVar[snakescore];no;ℹ️] $endtry
+    $try $addSelectMenuOption[$authorID-snake-crapassdogshitisbad-$var[type];$username[$authorID] (Your Highest);l;Score : $getVar[snakescore] (Highest), $var[score] (current);no;ℹ️] $endtry
     $try $addSelectMenuOption[$authorID-snake-crapassdogshitisbad-$var[type];$var[p]. $username[$getLeaderboardValue[$var[type];snakescore;asc;$var[p];id]];l;Score : $getLeaderboardValue[$var[type];snakescore;asc;$var[p];value];no;🥇] $endtry $var[p;$sum[$var[p];1]]
     $try $addSelectMenuOption[$authorID-snake-crapassdogshitisbad-$var[type];$var[p]. $username[$getLeaderboardValue[$var[type];snakescore;asc;$var[p];id]];l;Score : $getLeaderboardValue[$var[type];snakescore;asc;$var[p];value];no;🥈] $endtry $var[p;$sum[$var[p];1]]
     $try $addSelectMenuOption[$authorID-snake-crapassdogshitisbad-$var[type];$var[p]. $username[$getLeaderboardValue[$var[type];snakescore;asc;$var[p];id]];l;Score : $getLeaderboardValue[$var[type];snakescore;asc;$var[p];value];no;🥉] $endtry $var[p;$sum[$var[p];1]]
@@ -329,7 +329,7 @@ $if[$var[lb]==true]
     $removeButtons
     $var[p;1] $var[type;globaluser]
     $newSelectMenu[$authorID-snake-crapassdogshitisbad-$var[type];1;1;Global LeaderBoard]
-    $try $addSelectMenuOption[$authorID-snake-crapassdogshitisbad-$var[type];$username[$authorID] (Your Highest);l;Score : $getVar[snakescore];no;ℹ️] $endtry
+    $try $addSelectMenuOption[$authorID-snake-crapassdogshitisbad-$var[type];$username[$authorID] (Your Highest);l;Score : $getVar[snakescore] (Highest), $var[score] (current);no;ℹ️] $endtry
     $try $addSelectMenuOption[$authorID-snake-crapassdogshitisbad-$var[type];$var[p]. $username[$getLeaderboardValue[$var[type];snakescore;asc;$var[p];id]];l;Score : $getLeaderboardValue[$var[type];snakescore;asc;$var[p];value];no;🥇] $endtry $var[p;$sum[$var[p];1]]
     $try $addSelectMenuOption[$authorID-snake-crapassdogshitisbad-$var[type];$var[p]. $username[$getLeaderboardValue[$var[type];snakescore;asc;$var[p];id]];l;Score : $getLeaderboardValue[$var[type];snakescore;asc;$var[p];value];no;🥈] $endtry $var[p;$sum[$var[p];1]]
     $try $addSelectMenuOption[$authorID-snake-crapassdogshitisbad-$var[type];$var[p]. $username[$getLeaderboardValue[$var[type];snakescore;asc;$var[p];id]];l;Score : $getLeaderboardValue[$var[type];snakescore;asc;$var[p];value];no;🥉] $endtry $var[p;$sum[$var[p];1]]
@@ -355,6 +355,7 @@ $if[$var[lb]==true]
     $try $addSelectMenuOption[$authorID-snake-crapassdogshitisbad-$var[type];$var[p]. $username[$getLeaderboardValue[$var[type];snakescore;asc;$var[p];id]];l;Score : $getLeaderboardValue[$var[type];snakescore;asc;$var[p];value];no;] $endtry $var[p;$sum[$var[p];1]]
     $try $addSelectMenuOption[$authorID-snake-crapassdogshitisbad-$var[type];$var[p]. $username[$getLeaderboardValue[$var[type];snakescore;asc;$var[p];id]];l;Score : $getLeaderboardValue[$var[type];snakescore;asc;$var[p];value];no;] $endtry $var[p;$sum[$var[p];1]]
 $endif
+
 
 
   </code></pre>
