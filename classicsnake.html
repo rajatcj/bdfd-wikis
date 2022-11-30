@@ -84,8 +84,8 @@
           <div class="participants">
             <img src="https://api.lanyard.rest/754033245972201612.jpg" alt="participant">
           </div>
-          <a href="./index.html"><button class="days-left" style="color: #4f3ff0;">
-            More Stuffs
+          <a href="./index.html"><button class="days-left" style="background-color: #ff4322; color: #ffffff; border-color: #ffffff;">
+            Explore More Codes/Snippets
           </button></a>
         </div>
         
@@ -151,6 +151,14 @@ $setUserVar[snakedata;$var[snakedata]]
 $setVar[snakedata;$var[applepo]-$var[snakepo]-0-$sum[$getTimestamp;99]-$var[gameid];$authorID]
 $setUserVar[snakelength;]
 $setVar[snakelength;1;$authorID]
+
+
+$if[$getVar[snakescore;$authorID]==]
+    $setVar[snakescore;0;$authorID]
+$endif
+$if[$getUserVar[snakescore;$authorID]==]
+    $setUserVar[snakescore;0;$authorID]
+$endif
 
 $color[ff8888]
 $title[🐍 Classic Snakes]
@@ -261,7 +269,7 @@ $setUserVar[snakelength;$replaceText[$replaceText[$var[snakepoold]-$joinSplitTex
 $eval[%{DOL}%var[$replaceText[$getUserVar[snakelength];-;\;🟩\]%{DOL}%var[]\;🟩\]]
 $var[$var[snakepo];🐸] 
 
-$if[$checkContains[$getUserVar[snakelength];$var[applepo]]]
+$if[$checkContains[$getUserVar[snakelength];$var[applepo]]] $defer
 $var[applepo;$optOff[$random[1;9]]$optOff[$random[1;9]]] $var[$var[applepo];🍎] $if[$checkContains[$getUserVar[snakelength];$var[applepo]]]
 $var[applepo;$optOff[$random[1;9]]$optOff[$random[1;9]]] $var[$var[applepo];🍎] $if[$checkContains[$getUserVar[snakelength];$var[applepo]]]
 $var[applepo;$optOff[$random[1;9]]$optOff[$random[1;9]]] $var[$var[applepo];🍎] $if[$checkContains[$getUserVar[snakelength];$var[applepo]]]
@@ -270,7 +278,19 @@ $var[applepo;$optOff[$random[1;9]]$optOff[$random[1;9]]] $var[$var[applepo];🍎
 $var[applepo;$optOff[$random[1;9]]$optOff[$random[1;9]]] $var[$var[applepo];🍎] $if[$checkContains[$getUserVar[snakelength];$var[applepo]]]
 $var[applepo;$optOff[$random[1;9]]$optOff[$random[1;9]]] $var[$var[applepo];🍎] $if[$checkContains[$getUserVar[snakelength];$var[applepo]]]
 $var[applepo;$optOff[$random[1;9]]$optOff[$random[1;9]]] $var[$var[applepo];🍎] $if[$checkContains[$getUserVar[snakelength];$var[applepo]]]
-$var[applepo;$optOff[$random[1;9]]$optOff[$random[1;9]]] $var[$var[applepo];🍎] $endif $endif $endif $endif $endif $endif $endif $endif $endif
+$var[applepo;$optOff[$random[1;9]]$optOff[$random[1;9]]] $var[$var[applepo];🍎] $if[$checkContains[$getUserVar[snakelength];$var[applepo]]]
+$var[applepo;$optOff[$random[1;9]]$optOff[$random[1;9]]] $var[$var[applepo];🍎] $if[$checkContains[$getUserVar[snakelength];$var[applepo]]]
+$var[applepo;$optOff[$random[1;9]]$optOff[$random[1;9]]] $var[$var[applepo];🍎] $if[$checkContains[$getUserVar[snakelength];$var[applepo]]]
+$var[applepo;$optOff[$random[1;9]]$optOff[$random[1;9]]] $var[$var[applepo];🍎] $if[$checkContains[$getUserVar[snakelength];$var[applepo]]]
+$var[applepo;$optOff[$random[1;9]]$optOff[$random[1;9]]] $var[$var[applepo];🍎] $if[$checkContains[$getUserVar[snakelength];$var[applepo]]]
+$var[applepo;$optOff[$random[1;9]]$optOff[$random[1;9]]] $var[$var[applepo];🍎] $if[$checkContains[$getUserVar[snakelength];$var[applepo]]]
+$var[applepo;$optOff[$random[1;9]]$optOff[$random[1;9]]] $var[$var[applepo];🍎] $if[$checkContains[$getUserVar[snakelength];$var[applepo]]]
+$var[applepo;$optOff[$random[1;9]]$optOff[$random[1;9]]] $var[$var[applepo];🍎] $if[$checkContains[$getUserVar[snakelength];$var[applepo]]]
+$var[applepo;$optOff[$random[1;9]]$optOff[$random[1;9]]] $var[$var[applepo];🍎] $if[$checkContains[$getUserVar[snakelength];$var[applepo]]]
+$var[applepo;$optOff[$random[1;9]]$optOff[$random[1;9]]] $var[$var[applepo];🍎] $if[$checkContains[$getUserVar[snakelength];$var[applepo]]]
+$var[applepo;$optOff[$random[1;9]]$optOff[$random[1;9]]] $var[$var[applepo];🍎] $if[$checkContains[$getUserVar[snakelength];$var[applepo]]]
+$var[applepo;$optOff[$random[1;9]]$optOff[$random[1;9]]] $var[$var[applepo];🍎] $if[$checkContains[$getUserVar[snakelength];$var[applepo]]]
+$var[applepo;$optOff[$random[1;9]]$optOff[$random[1;9]]] $var[$var[applepo];🍎] $endif $endif $endif $endif $endif $endif $endif $endif $endif $endif $endif $endif $endif $endif $endif $endif $endif $endif $endif $endif $endif
 
 $var[r;0]
 $var[snakedata;$replaceText[
