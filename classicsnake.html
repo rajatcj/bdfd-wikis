@@ -210,7 +210,7 @@ $var[lb;false]
 $if[$var[time]<$getTimestamp]
     $var[lb;true]
     $if[$getVar[snakescore;$authorID]<$var[score]]
-        $sendMessage[<@$authorID> 🐍 Classic Snake **Timed Up** and your score was ` $var[score] `, GG. ***[AND ITS YOUR NEW HIGHSCORE]***]
+        $sendMessage[<@$authorID> 🐍 Classic Snake **Timed Up** and your score was ` $var[score] `, GG. ***[AND ITS YOUR NEW HIGHSCORE\]***]
         $setUserVar[snakescore;$var[score];$authorID]
         $setVar[snakescore;$var[score];$authorID]
     $else
@@ -238,7 +238,7 @@ $endif
 $if[$checkContains[$getUserVar[snakelength];$var[snakepo]]]
     $var[lb;true]
     $if[$getVar[snakescore;$authorID]<$var[score]]
-        $sendMessage[<@$authorID> 🐍 Classic Snake **ate himself** and died with score ` $var[score] `, **Not GG**. ***[AND ITS YOUR NEW HIGHSCORE]***]
+        $sendMessage[<@$authorID> 🐍 Classic Snake **ate himself** and died with score ` $var[score] `, **Not GG**. ***[AND ITS YOUR NEW HIGHSCORE\]***]
         $setUserVar[snakescore;$var[score];$authorID]
         $setVar[snakescore;$var[score];$authorID]
     $else
