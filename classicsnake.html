@@ -97,9 +97,10 @@
   </div>
   
     <div class="projects-section-header" style="white-space: wrap; display: inline-block; ">
-      <p>Variables :</p>
+      <p>Variables : 3</p>
       <pre><code class="language-ruby">"snakedata" with no value.</code></pre>
       <pre><code class="language-ruby">"snakelength" with no value.</code></pre>
+      <pre><code class="language-ruby">"snakescore" with no value.</code></pre>
       <br>
       <br>
       <p>Code 1/2</p>
@@ -111,8 +112,6 @@
       <pre onclick="CopyToClipboard('code1', 'copy1');return false;" ><span class="copytext" id="copy1"><i class="fa-regular fa-copy"></i> Click anywhere to copy</span>
 <code class="language-ruby" id="code1">
 $nomention
-
-$var[minute;5] $c[Time upto what to run the game]
 
 $var[bg;⬛]
 
@@ -149,7 +148,7 @@ $var[c;1]$var[r;$sum[$var[r];1]]$var[$var[r]$var[c]]-$var[c;$sum[$var[c];1]]$var
 ]
 
 $setUserVar[snakedata;$var[snakedata]]
-$setVar[snakedata;$var[applepo]-$var[snakepo]-0-$sum[$getTimestamp;$multi[60;$var[minute]]]-$var[gameid];$authorID]
+$setVar[snakedata;$var[applepo]-$var[snakepo]-0-$sum[$getTimestamp;99]-$var[gameid];$authorID]
 $setUserVar[snakelength;]
 $setVar[snakelength;1;$authorID]
 
@@ -161,11 +160,12 @@ $footer[Move the 🐍 & collct as many 🍎s possible within time.]
 $addButton[no;$authorID-snake-nothing3-$var[gameid];;secondary;true;⬛]
 $addButton[no;$authorID-snake-uparrow-$var[gameid];;primary;false;⏫]
 $addButton[no;$authorID-snake-nothing4-$var[gameid];;secondary;true;⬛]
-$addButton[no;$authorID-snake-nothing2-$var[gameid];$multi[60;$var[minute]];secondary;true;⏰]
+$addButton[no;$authorID-snake-nothing2-$var[gameid];99;secondary;true;⏰]
 $addButton[yes;$authorID-snake-leftarrow-$var[gameid];;primary;false;⏪]
 $addButton[no;$authorID-snake-downarrow-$var[gameid];;primary;false;⏬]
 $addButton[no;$authorID-snake-rightarrow-$var[gameid];;primary;false;⏩]
 $addButton[no;$authorID-snake-nothing1-$var[gameid];0;secondary;true;🍎]
+
   </code></pre>
       </div>
 
@@ -206,15 +206,16 @@ $var[gameid;$splitText[5]]
 $onlyIf[$checkContains[$customID;$var[gameid]]==true;]
 
 $textSplit[$splitText[2];]
-
+$var[lb;false]
 $if[$var[time]<$getTimestamp]
-    $editButton[$authorID-snake-uparrow-$var[gameid];;primary;true;⏫]
-    $editButton[$authorID-snake-leftarrow-$var[gameid];;primary;true;⏪]
-    $editButton[$authorID-snake-downarrow-$var[gameid];;primary;true;⏬]
-    $editButton[$authorID-snake-rightarrow-$var[gameid];;primary;true;⏩]
-    $editButton[$authorID-snake-nothing2-$var[gameid];0;secondary;true;⏰]
-    $editButton[$authorID-snake-nothing1-$var[gameid];$var[score];secondary;true;🍎]
-    $sendMessage[<@$authorID> 🐍 Classic Snake **timed up** and your score was $var[score], GG.]
+    $var[lb;true]
+    $if[$getVar[snakescore;$authorID]>$var[score]]
+        $sendMessage[<@$authorID> 🐍 Classic Snake **Timed Up** and your score was ` $var[score] `, GG. ***[AND ITS YOUR NEW HIGHSCORE]***]
+        $setUserVar[snakescore;$var[score];$authorID]
+        $setVar[snakescore;$var[score];$authorID]
+    $else
+        $sendMessage[<@$authorID> 🐍 Classic Snake **Timed Up** and your score was ` $var[score] `, GG.]
+    $endif
 $else
     $editButton[$authorID-snake-nothing2-$var[gameid];$sub[$var[time];$getTimestamp];secondary;true;⏰]
     $if[$customID==$authorID-snake-uparrow-$var[gameid]]
@@ -232,17 +233,17 @@ $else
         $var[snakepo;$replaceText[$replaceText[$var[snakepo];10;1];0;9]]
     $endif
     $var[$splitText[1]$splitText[2];⬛]
-    $var[$var[snakepo];🐸]
 $endif
 
 $if[$checkContains[$getUserVar[snakelength];$var[snakepo]]]
-    $editButton[$authorID-snake-uparrow-$var[gameid];;primary;true;⏫]
-    $editButton[$authorID-snake-leftarrow-$var[gameid];;primary;true;⏪]
-    $editButton[$authorID-snake-downarrow-$var[gameid];;primary;true;⏬]
-    $editButton[$authorID-snake-rightarrow-$var[gameid];;primary;true;⏩]
-    $editButton[$authorID-snake-nothing2-$var[gameid];0;secondary;true;⏰]
-    $editButton[$authorID-snake-nothing1-$var[gameid];$var[score];secondary;true;🍎]
-    $sendMessage[<@$authorID> 🐍 Classic Snake **ate himself** and died with score ` $var[score] `, **Not GG**.]
+    $var[lb;true]
+    $if[$getVar[snakescore;$authorID]>$var[score]]
+        $sendMessage[<@$authorID> 🐍 Classic Snake **ate himself** and died with score ` $var[score] `, **Not GG**. ***[AND ITS YOUR NEW HIGHSCORE]***]
+        $setUserVar[snakescore;$var[score];$authorID]
+        $setVar[snakescore;$var[score];$authorID]
+    $else
+        $sendMessage[<@$authorID> 🐍 Classic Snake **ate himself** and died with score ` $var[score] `, **Not GG**.]
+    $endif
 $else
     $if[$var[snakepo]==$var[applepo]]
         $var[score;$sum[$var[score];1]]
@@ -259,6 +260,7 @@ $removeSplitTextElement[$sum[$getVar[snakelength;$authorID];1]]
 $setUserVar[snakelength;$replaceText[$replaceText[$var[snakepoold]-$joinSplitText[-]:;-:;];:;]]
 $eval[%{DOL}%var[$replaceText[$getUserVar[snakelength];-;\;🟩\]%{DOL}%var[]\;🟩\]]
 $var[$var[snakepo];🐸] 
+
 $if[$checkContains[$getUserVar[snakelength];$var[applepo]]]
 $var[applepo;$optOff[$random[1;9]]$optOff[$random[1;9]]] $var[$var[applepo];🍎] $if[$checkContains[$getUserVar[snakelength];$var[applepo]]]
 $var[applepo;$optOff[$random[1;9]]$optOff[$random[1;9]]] $var[$var[applepo];🍎] $if[$checkContains[$getUserVar[snakelength];$var[applepo]]]
@@ -293,6 +295,67 @@ $color[ff8888]
 $title[🐍 Classic Snakes]
 $description[$replaceText[$var[snakedata];-;]]
 $footer[Move the 🐍 & collct as many 🍎s possible within time.]
+
+$if[$var[lb]==true]
+    $removeButtons
+    $var[p;1] $var[type;user]
+    $newSelectMenu[$authorID-snake-crapassdogshitisbad-$var[type];1;1;Server LeaderBoard]
+    $try $addSelectMenuOption[$authorID-snake-crapassdogshitisbad-$var[type];$username[$authorID] (Your Highest);l;Score : $getVar[snakescore];no;ℹ️] $endtry
+    $try $addSelectMenuOption[$authorID-snake-crapassdogshitisbad-$var[type];$var[p]. $username[$getLeaderboardValue[$var[type];snakescore;asc;$var[p];id]];l;Score : $getLeaderboardValue[$var[type];snakescore;asc;$var[p];value];no;🥇] $endtry $var[p;$sum[$var[p];1]]
+    $try $addSelectMenuOption[$authorID-snake-crapassdogshitisbad-$var[type];$var[p]. $username[$getLeaderboardValue[$var[type];snakescore;asc;$var[p];id]];l;Score : $getLeaderboardValue[$var[type];snakescore;asc;$var[p];value];no;🥈] $endtry $var[p;$sum[$var[p];1]]
+    $try $addSelectMenuOption[$authorID-snake-crapassdogshitisbad-$var[type];$var[p]. $username[$getLeaderboardValue[$var[type];snakescore;asc;$var[p];id]];l;Score : $getLeaderboardValue[$var[type];snakescore;asc;$var[p];value];no;🥉] $endtry $var[p;$sum[$var[p];1]]
+    $try $addSelectMenuOption[$authorID-snake-crapassdogshitisbad-$var[type];$var[p]. $username[$getLeaderboardValue[$var[type];snakescore;asc;$var[p];id]];l;Score : $getLeaderboardValue[$var[type];snakescore;asc;$var[p];value];no;4️⃣] $endtry $var[p;$sum[$var[p];1]]
+    $try $addSelectMenuOption[$authorID-snake-crapassdogshitisbad-$var[type];$var[p]. $username[$getLeaderboardValue[$var[type];snakescore;asc;$var[p];id]];l;Score : $getLeaderboardValue[$var[type];snakescore;asc;$var[p];value];no;5️⃣] $endtry $var[p;$sum[$var[p];1]]
+    $try $addSelectMenuOption[$authorID-snake-crapassdogshitisbad-$var[type];$var[p]. $username[$getLeaderboardValue[$var[type];snakescore;asc;$var[p];id]];l;Score : $getLeaderboardValue[$var[type];snakescore;asc;$var[p];value];no;6️⃣] $endtry $var[p;$sum[$var[p];1]]
+    $try $addSelectMenuOption[$authorID-snake-crapassdogshitisbad-$var[type];$var[p]. $username[$getLeaderboardValue[$var[type];snakescore;asc;$var[p];id]];l;Score : $getLeaderboardValue[$var[type];snakescore;asc;$var[p];value];no;7️⃣] $endtry $var[p;$sum[$var[p];1]]
+    $try $addSelectMenuOption[$authorID-snake-crapassdogshitisbad-$var[type];$var[p]. $username[$getLeaderboardValue[$var[type];snakescore;asc;$var[p];id]];l;Score : $getLeaderboardValue[$var[type];snakescore;asc;$var[p];value];no;8️⃣] $endtry $var[p;$sum[$var[p];1]]
+    $try $addSelectMenuOption[$authorID-snake-crapassdogshitisbad-$var[type];$var[p]. $username[$getLeaderboardValue[$var[type];snakescore;asc;$var[p];id]];l;Score : $getLeaderboardValue[$var[type];snakescore;asc;$var[p];value];no;9️⃣] $endtry $var[p;$sum[$var[p];1]]
+    $try $addSelectMenuOption[$authorID-snake-crapassdogshitisbad-$var[type];$var[p]. $username[$getLeaderboardValue[$var[type];snakescore;asc;$var[p];id]];l;Score : $getLeaderboardValue[$var[type];snakescore;asc;$var[p];value];no;🔟] $endtry $var[p;$sum[$var[p];1]]
+    $try $addSelectMenuOption[$authorID-snake-crapassdogshitisbad-$var[type];$var[p]. $username[$getLeaderboardValue[$var[type];snakescore;asc;$var[p];id]];l;Score : $getLeaderboardValue[$var[type];snakescore;asc;$var[p];value];no;] $endtry $var[p;$sum[$var[p];1]]
+    $try $addSelectMenuOption[$authorID-snake-crapassdogshitisbad-$var[type];$var[p]. $username[$getLeaderboardValue[$var[type];snakescore;asc;$var[p];id]];l;Score : $getLeaderboardValue[$var[type];snakescore;asc;$var[p];value];no;] $endtry $var[p;$sum[$var[p];1]]
+    $try $addSelectMenuOption[$authorID-snake-crapassdogshitisbad-$var[type];$var[p]. $username[$getLeaderboardValue[$var[type];snakescore;asc;$var[p];id]];l;Score : $getLeaderboardValue[$var[type];snakescore;asc;$var[p];value];no;] $endtry $var[p;$sum[$var[p];1]]
+    $try $addSelectMenuOption[$authorID-snake-crapassdogshitisbad-$var[type];$var[p]. $username[$getLeaderboardValue[$var[type];snakescore;asc;$var[p];id]];l;Score : $getLeaderboardValue[$var[type];snakescore;asc;$var[p];value];no;] $endtry $var[p;$sum[$var[p];1]]
+    $try $addSelectMenuOption[$authorID-snake-crapassdogshitisbad-$var[type];$var[p]. $username[$getLeaderboardValue[$var[type];snakescore;asc;$var[p];id]];l;Score : $getLeaderboardValue[$var[type];snakescore;asc;$var[p];value];no;] $endtry $var[p;$sum[$var[p];1]]
+    $try $addSelectMenuOption[$authorID-snake-crapassdogshitisbad-$var[type];$var[p]. $username[$getLeaderboardValue[$var[type];snakescore;asc;$var[p];id]];l;Score : $getLeaderboardValue[$var[type];snakescore;asc;$var[p];value];no;] $endtry $var[p;$sum[$var[p];1]]
+    $try $addSelectMenuOption[$authorID-snake-crapassdogshitisbad-$var[type];$var[p]. $username[$getLeaderboardValue[$var[type];snakescore;asc;$var[p];id]];l;Score : $getLeaderboardValue[$var[type];snakescore;asc;$var[p];value];no;] $endtry $var[p;$sum[$var[p];1]]
+    $try $addSelectMenuOption[$authorID-snake-crapassdogshitisbad-$var[type];$var[p]. $username[$getLeaderboardValue[$var[type];snakescore;asc;$var[p];id]];l;Score : $getLeaderboardValue[$var[type];snakescore;asc;$var[p];value];no;] $endtry $var[p;$sum[$var[p];1]]
+    $try $addSelectMenuOption[$authorID-snake-crapassdogshitisbad-$var[type];$var[p]. $username[$getLeaderboardValue[$var[type];snakescore;asc;$var[p];id]];l;Score : $getLeaderboardValue[$var[type];snakescore;asc;$var[p];value];no;] $endtry $var[p;$sum[$var[p];1]]
+    $try $addSelectMenuOption[$authorID-snake-crapassdogshitisbad-$var[type];$var[p]. $username[$getLeaderboardValue[$var[type];snakescore;asc;$var[p];id]];l;Score : $getLeaderboardValue[$var[type];snakescore;asc;$var[p];value];no;] $endtry $var[p;$sum[$var[p];1]]
+    $try $addSelectMenuOption[$authorID-snake-crapassdogshitisbad-$var[type];$var[p]. $username[$getLeaderboardValue[$var[type];snakescore;asc;$var[p];id]];l;Score : $getLeaderboardValue[$var[type];snakescore;asc;$var[p];value];no;] $endtry $var[p;$sum[$var[p];1]]
+    $try $addSelectMenuOption[$authorID-snake-crapassdogshitisbad-$var[type];$var[p]. $username[$getLeaderboardValue[$var[type];snakescore;asc;$var[p];id]];l;Score : $getLeaderboardValue[$var[type];snakescore;asc;$var[p];value];no;] $endtry $var[p;$sum[$var[p];1]]
+    $try $addSelectMenuOption[$authorID-snake-crapassdogshitisbad-$var[type];$var[p]. $username[$getLeaderboardValue[$var[type];snakescore;asc;$var[p];id]];l;Score : $getLeaderboardValue[$var[type];snakescore;asc;$var[p];value];no;] $endtry $var[p;$sum[$var[p];1]]
+    $try $addSelectMenuOption[$authorID-snake-crapassdogshitisbad-$var[type];$var[p]. $username[$getLeaderboardValue[$var[type];snakescore;asc;$var[p];id]];l;Score : $getLeaderboardValue[$var[type];snakescore;asc;$var[p];value];no;] $endtry $var[p;$sum[$var[p];1]]
+
+    $removeButtons
+    $var[p;1] $var[type;globaluser]
+    $newSelectMenu[$authorID-snake-crapassdogshitisbad-$var[type];1;1;Global LeaderBoard]
+    $try $addSelectMenuOption[$authorID-snake-crapassdogshitisbad-$var[type];$username[$authorID] (Your Highest);l;Score : $getVar[snakescore];no;ℹ️] $endtry
+    $try $addSelectMenuOption[$authorID-snake-crapassdogshitisbad-$var[type];$var[p]. $username[$getLeaderboardValue[$var[type];snakescore;asc;$var[p];id]];l;Score : $getLeaderboardValue[$var[type];snakescore;asc;$var[p];value];no;🥇] $endtry $var[p;$sum[$var[p];1]]
+    $try $addSelectMenuOption[$authorID-snake-crapassdogshitisbad-$var[type];$var[p]. $username[$getLeaderboardValue[$var[type];snakescore;asc;$var[p];id]];l;Score : $getLeaderboardValue[$var[type];snakescore;asc;$var[p];value];no;🥈] $endtry $var[p;$sum[$var[p];1]]
+    $try $addSelectMenuOption[$authorID-snake-crapassdogshitisbad-$var[type];$var[p]. $username[$getLeaderboardValue[$var[type];snakescore;asc;$var[p];id]];l;Score : $getLeaderboardValue[$var[type];snakescore;asc;$var[p];value];no;🥉] $endtry $var[p;$sum[$var[p];1]]
+    $try $addSelectMenuOption[$authorID-snake-crapassdogshitisbad-$var[type];$var[p]. $username[$getLeaderboardValue[$var[type];snakescore;asc;$var[p];id]];l;Score : $getLeaderboardValue[$var[type];snakescore;asc;$var[p];value];no;4️⃣] $endtry $var[p;$sum[$var[p];1]]
+    $try $addSelectMenuOption[$authorID-snake-crapassdogshitisbad-$var[type];$var[p]. $username[$getLeaderboardValue[$var[type];snakescore;asc;$var[p];id]];l;Score : $getLeaderboardValue[$var[type];snakescore;asc;$var[p];value];no;5️⃣] $endtry $var[p;$sum[$var[p];1]]
+    $try $addSelectMenuOption[$authorID-snake-crapassdogshitisbad-$var[type];$var[p]. $username[$getLeaderboardValue[$var[type];snakescore;asc;$var[p];id]];l;Score : $getLeaderboardValue[$var[type];snakescore;asc;$var[p];value];no;6️⃣] $endtry $var[p;$sum[$var[p];1]]
+    $try $addSelectMenuOption[$authorID-snake-crapassdogshitisbad-$var[type];$var[p]. $username[$getLeaderboardValue[$var[type];snakescore;asc;$var[p];id]];l;Score : $getLeaderboardValue[$var[type];snakescore;asc;$var[p];value];no;7️⃣] $endtry $var[p;$sum[$var[p];1]]
+    $try $addSelectMenuOption[$authorID-snake-crapassdogshitisbad-$var[type];$var[p]. $username[$getLeaderboardValue[$var[type];snakescore;asc;$var[p];id]];l;Score : $getLeaderboardValue[$var[type];snakescore;asc;$var[p];value];no;8️⃣] $endtry $var[p;$sum[$var[p];1]]
+    $try $addSelectMenuOption[$authorID-snake-crapassdogshitisbad-$var[type];$var[p]. $username[$getLeaderboardValue[$var[type];snakescore;asc;$var[p];id]];l;Score : $getLeaderboardValue[$var[type];snakescore;asc;$var[p];value];no;9️⃣] $endtry $var[p;$sum[$var[p];1]]
+    $try $addSelectMenuOption[$authorID-snake-crapassdogshitisbad-$var[type];$var[p]. $username[$getLeaderboardValue[$var[type];snakescore;asc;$var[p];id]];l;Score : $getLeaderboardValue[$var[type];snakescore;asc;$var[p];value];no;🔟] $endtry $var[p;$sum[$var[p];1]]
+    $try $addSelectMenuOption[$authorID-snake-crapassdogshitisbad-$var[type];$var[p]. $username[$getLeaderboardValue[$var[type];snakescore;asc;$var[p];id]];l;Score : $getLeaderboardValue[$var[type];snakescore;asc;$var[p];value];no;] $endtry $var[p;$sum[$var[p];1]]
+    $try $addSelectMenuOption[$authorID-snake-crapassdogshitisbad-$var[type];$var[p]. $username[$getLeaderboardValue[$var[type];snakescore;asc;$var[p];id]];l;Score : $getLeaderboardValue[$var[type];snakescore;asc;$var[p];value];no;] $endtry $var[p;$sum[$var[p];1]]
+    $try $addSelectMenuOption[$authorID-snake-crapassdogshitisbad-$var[type];$var[p]. $username[$getLeaderboardValue[$var[type];snakescore;asc;$var[p];id]];l;Score : $getLeaderboardValue[$var[type];snakescore;asc;$var[p];value];no;] $endtry $var[p;$sum[$var[p];1]]
+    $try $addSelectMenuOption[$authorID-snake-crapassdogshitisbad-$var[type];$var[p]. $username[$getLeaderboardValue[$var[type];snakescore;asc;$var[p];id]];l;Score : $getLeaderboardValue[$var[type];snakescore;asc;$var[p];value];no;] $endtry $var[p;$sum[$var[p];1]]
+    $try $addSelectMenuOption[$authorID-snake-crapassdogshitisbad-$var[type];$var[p]. $username[$getLeaderboardValue[$var[type];snakescore;asc;$var[p];id]];l;Score : $getLeaderboardValue[$var[type];snakescore;asc;$var[p];value];no;] $endtry $var[p;$sum[$var[p];1]]
+    $try $addSelectMenuOption[$authorID-snake-crapassdogshitisbad-$var[type];$var[p]. $username[$getLeaderboardValue[$var[type];snakescore;asc;$var[p];id]];l;Score : $getLeaderboardValue[$var[type];snakescore;asc;$var[p];value];no;] $endtry $var[p;$sum[$var[p];1]]
+    $try $addSelectMenuOption[$authorID-snake-crapassdogshitisbad-$var[type];$var[p]. $username[$getLeaderboardValue[$var[type];snakescore;asc;$var[p];id]];l;Score : $getLeaderboardValue[$var[type];snakescore;asc;$var[p];value];no;] $endtry $var[p;$sum[$var[p];1]]
+    $try $addSelectMenuOption[$authorID-snake-crapassdogshitisbad-$var[type];$var[p]. $username[$getLeaderboardValue[$var[type];snakescore;asc;$var[p];id]];l;Score : $getLeaderboardValue[$var[type];snakescore;asc;$var[p];value];no;] $endtry $var[p;$sum[$var[p];1]]
+    $try $addSelectMenuOption[$authorID-snake-crapassdogshitisbad-$var[type];$var[p]. $username[$getLeaderboardValue[$var[type];snakescore;asc;$var[p];id]];l;Score : $getLeaderboardValue[$var[type];snakescore;asc;$var[p];value];no;] $endtry $var[p;$sum[$var[p];1]]
+    $try $addSelectMenuOption[$authorID-snake-crapassdogshitisbad-$var[type];$var[p]. $username[$getLeaderboardValue[$var[type];snakescore;asc;$var[p];id]];l;Score : $getLeaderboardValue[$var[type];snakescore;asc;$var[p];value];no;] $endtry $var[p;$sum[$var[p];1]]
+    $try $addSelectMenuOption[$authorID-snake-crapassdogshitisbad-$var[type];$var[p]. $username[$getLeaderboardValue[$var[type];snakescore;asc;$var[p];id]];l;Score : $getLeaderboardValue[$var[type];snakescore;asc;$var[p];value];no;] $endtry $var[p;$sum[$var[p];1]]
+    $try $addSelectMenuOption[$authorID-snake-crapassdogshitisbad-$var[type];$var[p]. $username[$getLeaderboardValue[$var[type];snakescore;asc;$var[p];id]];l;Score : $getLeaderboardValue[$var[type];snakescore;asc;$var[p];value];no;] $endtry $var[p;$sum[$var[p];1]]
+    $try $addSelectMenuOption[$authorID-snake-crapassdogshitisbad-$var[type];$var[p]. $username[$getLeaderboardValue[$var[type];snakescore;asc;$var[p];id]];l;Score : $getLeaderboardValue[$var[type];snakescore;asc;$var[p];value];no;] $endtry $var[p;$sum[$var[p];1]]
+    $try $addSelectMenuOption[$authorID-snake-crapassdogshitisbad-$var[type];$var[p]. $username[$getLeaderboardValue[$var[type];snakescore;asc;$var[p];id]];l;Score : $getLeaderboardValue[$var[type];snakescore;asc;$var[p];value];no;] $endtry $var[p;$sum[$var[p];1]]
+$endif
+
 
   </code></pre>
       </div>
